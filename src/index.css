@@ -2,41 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Smart Home Design System - All colors, gradients, fonts, etc defined here. 
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
+    /* Base colors */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 215 20% 15%;
 
+    /* Card system */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 215 20% 15%;
 
+    /* Popover system */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 215 20% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Smart Home Tech Primary - Deep tech blue */
+    --primary: 217 91% 35%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 217 91% 50%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Tech Secondary - Modern slate */
+    --secondary: 215 25% 96%;
+    --secondary-foreground: 215 20% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted system */
+    --muted: 215 25% 96%;
+    --muted-foreground: 215 15% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Smart Accent - Teal for IoT */
+    --accent: 180 84% 45%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 180 84% 60%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
 
-    --radius: 0.5rem;
+    /* Interactive elements */
+    --border: 215 20% 88%;
+    --input: 215 20% 88%;
+    --ring: 217 91% 35%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 35%), hsl(217 91% 50%));
+    --gradient-accent: linear-gradient(135deg, hsl(180 84% 45%), hsl(180 84% 60%));
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 35%) 0%, hsl(180 84% 45%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(215 25% 98%) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 12px -4px hsl(215 20% 15% / 0.08);
+    --shadow-medium: 0 8px 25px -8px hsl(215 20% 15% / 0.12);
+    --shadow-strong: 0 16px 40px -12px hsl(215 20% 15% / 0.16);
+    --shadow-glow: 0 0 40px hsl(217 91% 50% / 0.25);
+
+    /* Animation easing */
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,33 +89,62 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Base dark colors */
+    --background: 215 30% 8%;
+    --foreground: 215 20% 92%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    /* Card system dark */
+    --card: 215 30% 10%;
+    --card-foreground: 215 20% 92%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    /* Popover system dark */
+    --popover: 215 30% 10%;
+    --popover-foreground: 215 20% 92%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* Smart Home Tech Primary - Bright blue for dark */
+    --primary: 217 91% 55%;
+    --primary-foreground: 215 30% 8%;
+    --primary-glow: 217 91% 70%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    /* Tech Secondary dark - Darker slate */
+    --secondary: 215 25% 15%;
+    --secondary-foreground: 215 20% 92%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    /* Muted dark system */
+    --muted: 215 25% 15%;
+    --muted-foreground: 215 15% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    /* Smart Accent dark - Bright teal */
+    --accent: 180 84% 55%;
+    --accent-foreground: 215 30% 8%;
+    --accent-light: 180 84% 70%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status colors dark */
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 215 30% 8%;
+    
+    --success: 142 76% 46%;
+    --success-foreground: 215 30% 8%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --warning: 38 92% 60%;
+    --warning-foreground: 215 30% 8%;
+
+    /* Interactive elements dark */
+    --border: 215 25% 20%;
+    --input: 215 25% 20%;
+    --ring: 217 91% 55%;
+
+    /* Gradients dark */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 45%), hsl(217 91% 60%));
+    --gradient-accent: linear-gradient(135deg, hsl(180 84% 50%), hsl(180 84% 65%));
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 45%) 0%, hsl(180 84% 50%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(215 30% 10%) 0%, hsl(215 25% 12%) 100%);
+
+    /* Shadows dark */
+    --shadow-soft: 0 4px 12px -4px hsl(215 30% 5% / 0.4);
+    --shadow-medium: 0 8px 25px -8px hsl(215 30% 5% / 0.5);
+    --shadow-strong: 0 16px 40px -12px hsl(215 30% 5% / 0.6);
+    --shadow-glow: 0 0 40px hsl(217 91% 55% / 0.3);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -100,6 +162,66 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+}
+
+@layer components {
+  /* Smart Home specific components */
+  .tech-card {
+    @apply relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-card to-card/50 backdrop-blur-sm shadow-[var(--shadow-soft)] transition-all duration-300 hover:shadow-[var(--shadow-medium)] hover:-translate-y-1;
+  }
+
+  .tech-card::before {
+    @apply absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 transition-opacity duration-300;
+    content: '';
+  }
+
+  .tech-card:hover::before {
+    @apply opacity-100;
+  }
+
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  .glow-effect {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .smooth-transition {
+    transition: all 0.3s var(--ease-smooth);
+  }
+
+  .spring-transition {
+    transition: all 0.5s var(--ease-spring);
+  }
+
+  /* Icon containers */
+  .service-icon {
+    @apply flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary-glow text-primary-foreground shadow-[var(--shadow-soft)] transition-all duration-300 hover:shadow-[var(--shadow-glow)] hover:scale-110;
+  }
+
+  .feature-icon {
+    @apply flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-accent to-accent-light text-accent-foreground shadow-[var(--shadow-soft)] transition-all duration-300 hover:shadow-[var(--shadow-medium)] hover:scale-105;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
+  }
+
+  .border-gradient {
+    border-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent))) 1;
   }
 }
