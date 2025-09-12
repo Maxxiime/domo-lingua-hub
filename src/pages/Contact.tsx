@@ -19,7 +19,7 @@ const Contact = () => {
         </section>
 
         {/* Contact Form */}
-        <section className="container mx-auto px-4 pb-16">
+        <section className="container mx-auto px-4 pb-16 relative z-10 pointer-events-auto">
           <ContactForm />
         </section>
       </main>
