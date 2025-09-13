@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Packs = () => {
   const { t } = useLanguage();
@@ -80,11 +81,14 @@ const Packs = () => {
                 </CardContent>
                 
                 <CardFooter className="flex flex-col gap-3 pt-6">
-                  <Button 
-                    variant={pack.popular ? "hero" : "tech"} 
+                  <Button
+                    asChild
+                    variant={pack.popular ? "hero" : "tech"}
                     className="w-full"
                   >
-                    {t('common.request_quote')}
+                    <Link to="/quote">
+                      {t('common.request_quote')}
+                    </Link>
                   </Button>
                   <Button variant="outline" className="w-full">
                     {t('common.buy_now')}
@@ -102,8 +106,10 @@ const Packs = () => {
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
               Every smart home is unique. Contact us for a personalized quote tailored to your specific needs and requirements.
             </p>
-            <Button variant="hero" size="lg">
-              {t('nav.contact')}
+            <Button asChild variant="hero" size="lg">
+              <Link to="/contact">
+                {t('nav.contact')}
+              </Link>
             </Button>
           </div>
         </section>

@@ -3,6 +3,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const FAQ = () => {
   const { t } = useLanguage();
@@ -81,11 +82,15 @@ const FAQ = () => {
               Can't find the answer you're looking for? Our team is here to help with personalized advice for your smart home project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="lg">
-                {t('nav.contact')}
+              <Button asChild variant="hero" size="lg">
+                <Link to="/contact">
+                  {t('nav.contact')}
+                </Link>
               </Button>
-              <Button variant="outline" size="lg">
-                {t('common.request_quote')}
+              <Button asChild variant="outline" size="lg">
+                <Link to="/quote">
+                  {t('common.request_quote')}
+                </Link>
               </Button>
             </div>
           </div>

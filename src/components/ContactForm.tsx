@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Upload, Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const ContactForm = () => {
   const { t } = useLanguage();
@@ -206,8 +207,10 @@ const ContactForm = () => {
             </div>
 
             <div className="pt-6 border-t">
-              <Button variant="outline" className="w-full">
-                {t('common.request_quote')}
+              <Button asChild variant="outline" className="w-full">
+                <Link to="/quote">
+                  {t('common.request_quote')}
+                </Link>
               </Button>
             </div>
           </CardContent>
