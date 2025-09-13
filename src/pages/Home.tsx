@@ -24,6 +24,20 @@ const Home = () => {
     return () => console.log('[Home] unmounted');
   }, []);
 
+  useEffect(() => {
+    const root = document.querySelector('main, #root, body') || document.body;
+    const onStart = (e: AnimationEvent) => {
+      const t = e.target as HTMLElement;
+      // Only log elements inside the home page
+      if (!root.contains(t)) return;
+      const id = t.id || '';
+      const cls = (t.className || '').toString().trim();
+      console.log('[ANIM start]', e.animationName, { id, cls });
+    };
+    document.addEventListener('animationstart', onStart, true);
+    return () => document.removeEventListener('animationstart', onStart, true);
+  }, []);
+
   const services = [
     {
       icon: <Settings className="h-8 w-8" />,
