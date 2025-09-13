@@ -23,32 +23,27 @@ const Home = () => {
     {
       icon: <Settings className="h-8 w-8" />,
       title: t('services.installation'),
-      description: t('services.installation.desc'),
-      href: '/services'
+      description: t('services.installation.desc')
     },
     {
       icon: <Smartphone className="h-8 w-8" />,
       title: t('services.devices'),
-      description: t('services.devices.desc'),
-      href: '/services'
+      description: t('services.devices.desc')
     },
     {
       icon: <Monitor className="h-8 w-8" />,
       title: t('services.dashboard'),
-      description: t('services.dashboard.desc'),
-      href: '/services'
+      description: t('services.dashboard.desc')
     },
     {
       icon: <Lightbulb className="h-8 w-8" />,
       title: t('services.advice'),
-      description: t('services.advice.desc'),
-      href: '/services'
+      description: t('services.advice.desc')
     },
     {
       icon: <HeadphonesIcon className="h-8 w-8" />,
       title: t('services.maintenance'),
-      description: t('services.maintenance.desc'),
-      href: '/services'
+      description: t('services.maintenance.desc')
     }
   ];
 
