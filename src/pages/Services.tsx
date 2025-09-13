@@ -3,6 +3,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import ServiceCard from '@/components/ServiceCard';
 import { Settings, Smartphone, Monitor, Lightbulb, Wrench } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   const { t } = useLanguage();
@@ -76,8 +77,10 @@ const Services = () => {
                   <p className="text-sm text-muted-foreground">{service.features}</p>
                 </div>
                 
-                <Button variant="tech" className="w-full">
-                  {t('common.request_quote')}
+                <Button asChild variant="tech" className="w-full">
+                  <Link to="/quote">
+                    {t('common.request_quote')}
+                  </Link>
                 </Button>
               </div>
             ))}
@@ -92,11 +95,15 @@ const Services = () => {
               {t('services.page.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="lg">
-                {t('common.request_quote')}
+              <Button asChild variant="hero" size="lg">
+                <Link to="/quote">
+                  {t('common.request_quote')}
+                </Link>
               </Button>
-              <Button variant="outline" size="lg">
-                {t('nav.contact')}
+              <Button asChild variant="outline" size="lg">
+                <Link to="/contact">
+                  {t('nav.contact')}
+                </Link>
               </Button>
             </div>
           </div>
