@@ -16,7 +16,8 @@ import {
   Sun,
   Globe
 } from 'lucide-react';
-import { useLanguage, Language } from '@/contexts/LanguageContext';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { useLocale, type Locale } from '@/lib/i18n';
 import { useTheme } from '@/contexts/ThemeContext';
 import {
   DropdownMenu,
@@ -27,7 +28,8 @@ import {
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { t, language, setLanguage } = useLanguage();
+  const { t } = useLanguage();
+  const { locale, setLocale } = useLocale();
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
 
@@ -41,10 +43,10 @@ const Navigation = () => {
     { name: t('nav.faq'), href: '/faq', icon: HelpCircle },
   ];
 
-  const languages: { code: Language; label: string; flag: string }[] = [
-    { code: 'fr', label: 'Français', flag: '🇫🇷' },
-    { code: 'en', label: 'English', flag: '🇬🇧' },
-    { code: 'es', label: 'Español', flag: '🇪🇸' },
+  const languages: { code: Locale; label: string; flag: string }[] = [
+    { code: 'fr-FR', label: 'Français', flag: '🇫🇷' },
+    { code: 'en-US', label: 'US English', flag: '🇺🇸' },
+    { code: 'es-ES', label: 'Español', flag: '🇪🇸' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -99,8 +101,8 @@ const Navigation = () => {
                 {languages.map((lang) => (
                   <DropdownMenuItem
                     key={lang.code}
-                    onClick={() => setLanguage(lang.code)}
-                    className={language === lang.code ? 'bg-accent' : ''}
+                    onClick={() => setLocale(lang.code)}
+                    className={locale === lang.code ? 'bg-accent' : ''}
                   >
                     <span className="mr-2">{lang.flag}</span>
                     {lang.label}
