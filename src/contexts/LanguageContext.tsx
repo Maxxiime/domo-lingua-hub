@@ -1,18 +1,11 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { useLocale, type Locale } from '@/lib/i18n';
 
-export type Language = 'fr' | 'en' | 'es';
+export type Language = Locale;
 
-interface LanguageContextType {
-  language: Language;
-  setLanguage: (lang: Language) => void;
-  t: (key: string) => string;
-}
-
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 // Translation data
 const translations = {
-  fr: {
+  'fr-FR': {
     // Navigation
     'nav.home': 'Accueil',
     'nav.services': 'Services',
@@ -146,7 +139,7 @@ const translations = {
     'faq.q6.question': 'Proposez-vous de la formation ?',
     'faq.q6.answer': 'Oui, formation incluse dans nos packs Avancé et Pro. Sessions personnalisées disponibles séparément.'
   },
-  en: {
+  'en-US': {
     // Navigation
     'nav.home': 'Home',
     'nav.services': 'Services',
@@ -280,7 +273,7 @@ const translations = {
     'faq.q6.question': 'Do you provide training?',
     'faq.q6.answer': 'Yes, training included in our Advanced and Pro packs. Custom sessions available separately.'
   },
-  es: {
+  'es-ES': {
     // Navigation
     'nav.home': 'Inicio',
     'nav.services': 'Servicios',
@@ -416,24 +409,10 @@ const translations = {
   },
 };
 
-export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('fr');
-
-  const t = (key: string): string => {
-    return translations[language][key as keyof typeof translations[typeof language]] || key;
-  };
-
-  return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
-      {children}
-    </LanguageContext.Provider>
-  );
-};
-
 export const useLanguage = () => {
-  const context = useContext(LanguageContext);
-  if (context === undefined) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
-  return context;
+  const { locale, setLocale } = useLocale();
+  const t = (key: string): string => {
+    return translations[locale][key as keyof typeof translations[typeof locale]] || key;
+  };
+  return { language: locale, setLanguage: setLocale, t };
 };

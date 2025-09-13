@@ -55,12 +55,12 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ onEstimateChange }) => {
   };
 
   const formatPrice = (price: number) => {
-    const locale = language === 'fr' ? 'fr-CA' : 'en-CA';
+    const locale = language === 'fr-FR' ? 'fr-CA' : 'en-CA';
     const formatted = new Intl.NumberFormat(locale, {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2
     }).format(price);
-    return language === 'fr' ? `${formatted} $ CAD` : `CAD $${formatted}`;
+    return language === 'fr-FR' ? `${formatted} $ CAD` : `CAD $${formatted}`;
   };
 
   return (
