@@ -94,24 +94,24 @@ const Home = () => {
               {t('home.hero.description')}
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in [animation-delay:600ms]">
-              <Button 
-                asChild 
-                variant="hero" 
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button
+                asChild
+                variant="hero"
                 size="lg"
-                className="text-lg px-8 py-4 h-auto"
+                className="text-lg px-8 py-4 h-auto animate-fade-in [animation-delay:600ms]"
               >
                 <Link to="/quote">
                   {t('home.hero.cta')}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              
-              <Button 
-                asChild 
-                variant="tech" 
+
+              <Button
+                asChild
+                variant="tech"
                 size="lg"
-                className="text-lg px-8 py-4 h-auto text-white border-white/20 bg-white/10 hover:bg-white/20"
+                className="text-lg px-8 py-4 h-auto text-white border-white/20 bg-white/10 hover:bg-white/20 animate-fade-in [animation-delay:800ms]"
               >
                 <Link to="/services">
                   {t('home.hero.learn')}
@@ -120,11 +120,12 @@ const Home = () => {
             </div>
 
             {/* Feature icons */}
-            <div className="mt-16 flex justify-center space-x-6 animate-fade-in [animation-delay:800ms]">
+            <div className="mt-16 flex justify-center space-x-6">
               {features.map((feature, index) => (
-                <div 
+                <div
                   key={feature.name}
-                  className="flex flex-col items-center space-y-2 group"
+                  className="flex flex-col items-center space-y-2 group animate-fade-in"
+                  style={{ animationDelay: `${800 + index * 100}ms` }}
                 >
                   <div className="service-icon bg-white/10 backdrop-blur-sm border border-white/20 text-white group-hover:bg-white/20 group-hover:scale-110">
                     {feature.icon}
