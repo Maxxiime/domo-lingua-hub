@@ -13,7 +13,7 @@ interface QuoteFormProps {
 }
 
 const QuoteForm: React.FC<QuoteFormProps> = ({ onEstimateChange }) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [formData, setFormData] = useState({
@@ -54,6 +54,15 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ onEstimateChange }) => {
     }, 0);
   };
 
+  const formatPrice = (price: number) => {
+    const locale = language === 'fr' ? 'fr-CA' : 'en-CA';
+    const formatted = new Intl.NumberFormat(locale, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(price);
+    return language === 'fr' ? `${formatted} $ CAD` : `CAD $${formatted}`;
+  };
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
       {/* Services Selection */}
@@ -73,7 +82,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ onEstimateChange }) => {
                 <Label htmlFor={service.id} className="flex-1 cursor-pointer">
                   <div className="flex justify-between items-center">
                     <span>{service.name}</span>
-                    <span className="text-primary font-medium">€{service.price}</span>
+                    <span className="text-primary font-medium">{formatPrice(service.price)}</span>
                   </div>
                 </Label>
               </div>
@@ -172,7 +181,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ onEstimateChange }) => {
                     return service ? (
                       <div key={serviceId} className="flex justify-between text-sm">
                         <span>{service.name}</span>
-                        <span>€{service.price}</span>
+                        <span>{formatPrice(service.price)}</span>
                       </div>
                     ) : null;
                   })}
@@ -180,7 +189,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({ onEstimateChange }) => {
                 <div className="border-t pt-4">
                   <div className="flex justify-between items-center text-lg font-semibold">
                     <span>Total</span>
-                    <span className="text-primary">€{calculateEstimate()}</span>
+                    <span className="text-primary">{formatPrice(calculateEstimate())}</span>
                   </div>
                 </div>
                 <Button variant="hero" className="w-full mt-6">
