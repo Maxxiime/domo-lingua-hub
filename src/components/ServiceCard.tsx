@@ -2,15 +2,15 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Link } from 'react-router-dom';
 
 interface ServiceCardProps {
   icon: React.ReactNode;
   title: string;
   description: string;
-  href?: string;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, href }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description }) => {
   const { t } = useLanguage();
 
   return (
@@ -29,15 +29,16 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, hre
         {description}
       </p>
       
-      {href && (
-        <Button 
-          variant="ghost" 
-          className="group/btn p-0 h-auto text-primary hover:text-primary-glow"
-        >
+      <Button
+        asChild
+        variant="ghost"
+        className="group/btn p-0 h-auto text-primary hover:text-primary-glow"
+      >
+        <Link to="/services">
           <span className="mr-2">{t('common.learn_more')}</span>
           <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-        </Button>
-      )}
+        </Link>
+      </Button>
     </div>
   );
 };
