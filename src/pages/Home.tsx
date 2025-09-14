@@ -80,20 +80,23 @@ export default function Home() {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-hero py-20 sm:py-32">
+      <section
+        id="home-hero"
+        className="relative overflow-hidden bg-gradient-hero py-20 sm:py-32 animate-fade-in [animation-duration:700ms] [animation-fill-mode:both]"
+      >
         <div className="absolute inset-0 bg-grid-white/10 bg-[size:30px_30px] [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))]" />
         
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
-            <h1 data-animate-once className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl animate-fade-in">
+            <h1 data-animate-once className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
               {t('home.hero.title')}
             </h1>
-            
-            <p data-animate-once className="mb-4 text-xl text-white/90 sm:text-2xl animate-fade-in [animation-delay:200ms]">
+
+            <p data-animate-once className="mb-4 text-xl text-white/90 sm:text-2xl">
               {t('home.hero.subtitle')}
             </p>
-            
-            <p data-animate-once className="mb-10 text-lg text-white/80 sm:text-xl max-w-3xl mx-auto animate-fade-in [animation-delay:400ms]">
+
+            <p data-animate-once className="mb-10 text-lg text-white/80 sm:text-xl max-w-3xl mx-auto">
               {t('home.hero.description')}
             </p>
             
@@ -103,7 +106,7 @@ export default function Home() {
                 asChild
                 variant="hero"
                 size="lg"
-                className="text-lg px-8 py-4 h-auto animate-fade-in [animation-delay:600ms]"
+                className="text-lg px-8 py-4 h-auto"
               >
                 <Link to="/quote">
                   {t('home.hero.cta')}
@@ -116,7 +119,7 @@ export default function Home() {
                 asChild
                 variant="tech"
                 size="lg"
-                className="text-lg px-8 py-4 h-auto text-white border-white/20 bg-white/10 hover:bg-white/20 animate-fade-in [animation-delay:800ms]"
+                className="text-lg px-8 py-4 h-auto text-white border-white/20 bg-white/10 hover:bg-white/20"
               >
                 <Link to="/services">
                   {t('home.hero.learn')}
@@ -126,12 +129,11 @@ export default function Home() {
 
             {/* Feature icons */}
             <div className="mt-16 flex justify-center space-x-6">
-              {features.map((feature, index) => (
+              {features.map((feature) => (
                 <div
                   key={feature.name}
                   data-animate-once
-                  className="flex flex-col items-center space-y-2 group animate-fade-in"
-                  style={{ animationDelay: `${800 + index * 100}ms` }}
+                  className="flex flex-col items-center space-y-2 group"
                 >
                   <div className="service-icon bg-white/10 backdrop-blur-sm border border-white/20 text-white group-hover:bg-white/20 group-hover:scale-110">
                     {feature.icon}
