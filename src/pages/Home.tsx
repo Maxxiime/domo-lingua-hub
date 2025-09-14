@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import ServiceCard from '@/components/ServiceCard';
@@ -15,9 +15,12 @@ import {
   Lock,
   Wifi
 } from 'lucide-react';
+import { animateOnce } from '@/lib/animateOnce';
 
-const Home = () => {
+export default function Home() {
   const { t } = useLanguage();
+
+  useEffect(() => animateOnce(), []);
 
   useEffect(() => {
     console.log('[Home] mounted');
@@ -82,20 +85,21 @@ const Home = () => {
         
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
-            <h1 className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl animate-fade-in">
+            <h1 data-animate-once className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl animate-fade-in">
               {t('home.hero.title')}
             </h1>
             
-            <p className="mb-4 text-xl text-white/90 sm:text-2xl animate-fade-in [animation-delay:200ms]">
+            <p data-animate-once className="mb-4 text-xl text-white/90 sm:text-2xl animate-fade-in [animation-delay:200ms]">
               {t('home.hero.subtitle')}
             </p>
             
-            <p className="mb-10 text-lg text-white/80 sm:text-xl max-w-3xl mx-auto animate-fade-in [animation-delay:400ms]">
+            <p data-animate-once className="mb-10 text-lg text-white/80 sm:text-xl max-w-3xl mx-auto animate-fade-in [animation-delay:400ms]">
               {t('home.hero.description')}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button
+                data-animate-once
                 asChild
                 variant="hero"
                 size="lg"
@@ -108,6 +112,7 @@ const Home = () => {
               </Button>
 
               <Button
+                data-animate-once
                 asChild
                 variant="tech"
                 size="lg"
@@ -124,6 +129,7 @@ const Home = () => {
               {features.map((feature, index) => (
                 <div
                   key={feature.name}
+                  data-animate-once
                   className="flex flex-col items-center space-y-2 group animate-fade-in"
                   style={{ animationDelay: `${800 + index * 100}ms` }}
                 >
@@ -154,8 +160,9 @@ const Home = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.slice(0, 3).map((service, index) => (
-              <div 
+              <div
                 key={service.title}
+                data-animate-once
                 className="animate-fade-in"
                 style={{ animationDelay: `${index * 200}ms` }}
               >
@@ -166,8 +173,9 @@ const Home = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 max-w-4xl mx-auto">
             {services.slice(3).map((service, index) => (
-              <div 
+              <div
                 key={service.title}
+                data-animate-once
                 className="animate-fade-in"
                 style={{ animationDelay: `${(index + 3) * 200}ms` }}
               >
@@ -213,6 +221,4 @@ const Home = () => {
       </section>
     </div>
   );
-};
-
-export default Home;
+}
